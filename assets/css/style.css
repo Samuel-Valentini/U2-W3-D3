@@ -4,15 +4,18 @@
     height: auto;
 }
 
-#price {
+.card-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .no-hover:hover,
 .no-hover:focus,
 .no-hover:focus-visible,
 .no-hover:active {
-    color: var(--bs-primary);
-    background-color: inherit;
-    border-color: var(--bs-primary);
-    box-shadow: none;
+    color: var(--bs-primary) !important;
+    background-color: inherit !important;
+    border-color: var(--bs-primary) !important;
+    box-shadow: none !important;
 }
