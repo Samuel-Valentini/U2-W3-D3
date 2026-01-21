@@ -67,5 +67,31 @@ cardsBox.addEventListener("click", (e) => {
 
     const index = Number(buyBtn.dataset.i);
     const book = books[index];
+    console.log(book);
+
     cart.push(book);
+    const cartTable = document.getElementById("cart");
+
+    cartTable.innerHTML += `<tr>
+                        <td>${book.title}</td>
+                        <td>${book.price.toString().replace(".", ",")} €</td>
+                        <td>
+                            <button class="btn btn-warning remove-btn">
+                                Remove
+                            </button>
+                        </td>
+                    </tr>
+                    `;
+});
+
+const cartRow = document.getElementById("cart");
+
+cartRow.addEventListener("click", (e) => {
+    const removeBtn = e.target.closest(".remove-btn");
+    if (!removeBtn) return;
+
+    e.preventDefault();
+
+    const cartTr = removeBtn.closest("tr");
+    if (cartTr) cartTr.remove();
 });
