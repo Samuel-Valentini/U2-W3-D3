@@ -67,9 +67,9 @@ cardsBox.addEventListener("click", (e) => {
 
     const index = Number(buyBtn.dataset.i);
     const book = books[index];
-    console.log(book);
 
     cart.push(book);
+
     const cartTable = document.getElementById("cart");
 
     cartTable.innerHTML += `<tr>
@@ -82,6 +82,8 @@ cardsBox.addEventListener("click", (e) => {
                         </td>
                     </tr>
                     `;
+
+    localStorage.setItem("cart", JSON.stringify(cart));
 });
 
 const cartRow = document.getElementById("cart");
