@@ -2,6 +2,8 @@ console.log("script.js online");
 
 const urlBookDatabase = "https://striveschool-api.herokuapp.com/books";
 const cardsBox = document.getElementById("cards-box");
+let books = [];
+let cart = [];
 
 fetch(urlBookDatabase)
     .then((data) => {
@@ -13,7 +15,7 @@ fetch(urlBookDatabase)
     })
 
     .then((data) => {
-        console.log(data);
+        books = data;
 
         for (let i = 0; i < data.length; i++) {
             cardsBox.innerHTML += `<div class="col " id="card-${i}">
@@ -33,10 +35,10 @@ fetch(urlBookDatabase)
                     ${data[i].price} €
                 </p>
                 <div>
-                    <a href="#" class="btn btn-warning w-100" id="discard-${i}" >Discard</a>
+                    <a href="#" class="btn btn-warning w-100 discard-btn"  >Discard</a>
                 </div>
                 <div>
-                    <a href="#" class="btn btn-primary mt-1 w-100" id="buy-${i}">Buy Now</a>
+                    <a href="#" class="btn btn-primary mt-1 w-100 buy-btn" data-i="${i}">Buy Now</a>
                 </div>
             </div>
         </div>
@@ -46,3 +48,24 @@ fetch(urlBookDatabase)
         }
     })
     .catch((Error) => ("error:", Error));
+
+cardsBox.addEventListener("click", (e) => {
+    const discardBtn = e.target.closest(".discard-btn");
+    if (!discardBtn) return;
+
+    e.preventDefault();
+
+    const cardCol = discardBtn.closest(".col");
+    if (cardCol) cardCol.remove();
+});
+
+cardsBox.addEventListener("click", (e) => {
+    const buyBtn = e.target.closest(".buy-btn");
+    if (!buyBtn) return;
+
+    e.preventDefault();
+
+    const index = Number(buyBtn.dataset.i);
+    const book = books[index];
+    cart.push(book);
+});
