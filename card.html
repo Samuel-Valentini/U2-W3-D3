@@ -25,3 +25,40 @@
     </div>
 </div>
 <!-- card end -->
+
+<div class="col" id="card-${i}">
+    <!-- card ${i + 1} start -->
+    <div class="card h-100">
+        <img src="${data[i].img}" class="card-img-top" alt="${data[i].title}" />
+        <div
+            class="card-body"
+            style="
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            ">
+            <h5 class="card-title">Nightchaser</h5>
+
+            <div class="text-center">
+                <p
+                    class="text-center btn btn-outline-primary no-hover"
+                    id="price">
+                    4.84 €
+                </p>
+                <div>
+                    <a href="#" class="btn btn-warning w-100 discard-btn"
+                        >Discard</a
+                    >
+                </div>
+                <div>
+                    <a
+                        href="#"
+                        class="btn btn-primary mt-1 w-100 buy-btn"
+                        data-i="6"
+                        >Buy Now</a
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

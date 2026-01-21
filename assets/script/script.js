@@ -20,15 +20,21 @@ fetch(urlBookDatabase)
         for (let i = 0; i < data.length; i++) {
             cardsBox.innerHTML += `<div class="col " id="card-${i}">
 <!-- card ${i + 1} start -->
-    <div class="card">
+    <div class="card h-100">
         <img
             src="${data[i].img}"
             class="card-img-top"
             alt="${data[i].title}" />
-        <div class="card-body ">
+        <div class="card-body "
+       style="
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+"
+        >
             <h5 class="card-title">${data[i].title}</h5>
 
-            <div class="text-center">
+            <div class="text-center" >
                 <p
                     class="text-center btn btn-outline-primary no-hover"
                     id="price">
